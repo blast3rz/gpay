@@ -58,7 +58,7 @@ export default function Index() {
                       tokenizationSpecification: {
                         type: 'PAYMENT_GATEWAY',
                         parameters: {
-                          gateway: 'example',
+                          gateway: 'ariane',
                           gatewayMerchantId: 'exampleGatewayMerchantId',
                         },
                       },

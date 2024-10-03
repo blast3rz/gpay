@@ -42,7 +42,7 @@ export default function Index() {
           <div >
             <div className="flex justify-center items-center">
           <GooglePayButton
-                environment="TEST"
+                environment="PRODUCTION"
                 buttonColor="black"
 
                 paymentRequest={{

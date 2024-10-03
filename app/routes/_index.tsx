@@ -41,7 +41,7 @@ export default function Index() {
           <div >
             <div className="flex justify-center items-center">
           <GooglePayButton
-                environment="PRODUCTION"
+                environment="TEST"
                 buttonColor="black"
 
                 paymentRequest={{
@@ -57,6 +57,10 @@ export default function Index() {
                       },
                       tokenizationSpecification: {
                         type: 'PAYMENT_GATEWAY',
+                        // parameters: {
+                        //   protocolVersion: "ECv2",
+                        //   publicKey: 'BIIIAQ==',
+                        // }
                         parameters: {
                           gateway: 'ariane',
                           gatewayMerchantId: 'exampleGatewayMerchantId',

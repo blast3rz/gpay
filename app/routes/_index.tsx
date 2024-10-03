@@ -65,7 +65,7 @@ export default function Index() {
                     },
                   ],
                   merchantInfo: {
-                    merchantId: '12345678901234567890',
+                    merchantId: '14697717800897553235',
                     merchantName: 'Demo Merchant',
                   },
                   transactionInfo: {

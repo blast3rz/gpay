@@ -59,7 +59,7 @@ export default function Index() {
                         type: 'PAYMENT_GATEWAY',
                         // parameters: {
                         //   protocolVersion: "ECv2",
-                        //   publicKey: 'BIIIAQ==',
+                        //   publicKeynan: 'BIIIAQ==',
                         // }
                         parameters: {
                           gateway: 'ariane',

@@ -5,9 +5,11 @@ import { copyFileSync } from "node:fs";
 import { join } from "node:path";
 
 export default defineConfig({
+  base: "/gpay/",
   plugins: [
     remix({
       ssr: false,
+      basename: "/gpay/",
       buildEnd(args) {
         if (!args.viteConfig.isProduction) return;
 

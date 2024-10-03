@@ -1,6 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import GooglePayButton from '@google-pay/button-react';
-
+import { useState } from "react";
 export const meta: MetaFunction = () => {
   return [
     { title: "GPay Checkout" },
@@ -20,6 +20,7 @@ const products = [
 ];
 
 export default function Index() {
+  const [paymentData, setPaymentData] = useState(null);
   return (
     <div className="flex h-screen items-center justify-center">
         <div className="w-full max-w-md p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
@@ -57,10 +58,6 @@ export default function Index() {
                       },
                       tokenizationSpecification: {
                         type: 'PAYMENT_GATEWAY',
-                        // parameters: {
-                        //   protocolVersion: "ECv2",
-                        //   publicKeynan: 'BIIIAQ==',
-                        // }
                         parameters: {
                           gateway: 'ariane',
                           gatewayMerchantId: 'exampleGatewayMerchantId',
@@ -75,22 +72,32 @@ export default function Index() {
                   transactionInfo: {
                     totalPriceStatus: 'FINAL',
                     totalPriceLabel: 'Total',
-                    totalPrice: '100.00',
+                    totalPrice: `${products.reduce((acc, product) => acc + product.price, 0)}`,
                     currencyCode: 'USD',
                     countryCode: 'US',
                   },
                 }}
-                // onLoadPaymentData={paymentRequest => {
-                //   console.log('load payment data', paymentRequest);
-                // }}
                 onPaymentAuthorized={paymentData => {
                   console.log('payment authorized', paymentData);
+                  setPaymentData(paymentData);
                   return {
                     transactionState: 'SUCCESS',
                   };
                 }}
               /> 
               </div>
+              {
+                paymentData && (
+                  <div className="overflow-x-auto overflow-y-scroll mt-4">
+                <pre className="text-sm text-gray-700 dark:text-gray-300 
+                whitespace-pre-wrap break-words bg-gray-100 dark:bg-gray-800 p-4 rounded-md
+                max-h-96
+                 overflow-y-scroll">
+                  {JSON.stringify(paymentData, null, 2)}
+                </pre>
+                </div>
+                )
+              }
           </div>
         </div>
     </div>
